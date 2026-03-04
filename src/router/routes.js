@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '../utils/views/Login.vue'
-import SignUp from '../utils/views/SignUp.vue'
+import Login from '../views/Login.vue'
+import SignUp from '../views/SignUp.vue'
 import { useAuthStore } from '../store/auth'
 
 // Placeholder components

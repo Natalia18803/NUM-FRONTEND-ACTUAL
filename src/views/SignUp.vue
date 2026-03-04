@@ -211,7 +211,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { postData } from '../../services/apiClient.js'
+import { postData } from '../services/apiClient.js'
 
 const router = useRouter()
 const fullName = ref('')

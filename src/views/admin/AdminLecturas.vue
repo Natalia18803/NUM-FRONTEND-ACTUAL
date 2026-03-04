@@ -4,7 +4,8 @@
     <div class="row items-center justify-between q-mb-xl">
       <div class="text-h5 text-weight-bold text-white">Administración de Lecturas Numerológicas</div>
       <div class="row items-center q-gutter-sm">
-        <q-input v-model="search" outlined dark dense color="primary" placeholder="Buscar por usuario o lectura..." style="min-width:260px" class="search-input">
+        <q-input v-model="search" outlined dark dense color="primary" placeholder="Buscar por usuario o lectura..."
+          style="min-width:260px" class="search-input">
           <template v-slot:prepend><q-icon name="search" color="grey-6" /></template>
         </q-input>
         <q-btn flat round icon="notifications" color="grey-5" />
@@ -71,7 +72,9 @@
                   <q-icon name="person" color="white" size="18px" />
                 </q-avatar>
                 <div>
-                  <div class="text-white text-caption text-weight-medium">{{ lec.usuario_nombre || lec.usuario?.nombre || 'Usuario' }}</div>
+                  <div class="text-white text-caption text-weight-medium">{{ lec.usuario_nombre || lec.usuario?.nombre
+                    ||
+                    'Usuario' }}</div>
                   <div class="text-grey-7" style="font-size:10px">{{ lec.usuario_email || '' }}</div>
                 </div>
               </div>
@@ -85,24 +88,11 @@
               <div class="text-warning" style="font-size:10px; font-weight:600">{{ lec.urgencia || '' }}</div>
             </td>
             <td>
-              <q-btn
-                unelevated
-                no-caps
-                size="xs"
-                :color="getEstadoColor(lec.estado)"
-                :label="lec.estado || 'En Proceso'"
-                icon-right="arrow_drop_down"
-              />
+              <q-btn unelevated no-caps size="xs" :color="getEstadoColor(lec.estado)"
+                :label="lec.estado || 'En Proceso'" icon-right="arrow_drop_down" />
             </td>
             <td>
-              <q-btn
-                unelevated
-                no-caps
-                size="xs"
-                color="primary"
-                label="Ver Detalles"
-                @click="verDetalles(lec)"
-              />
+              <q-btn unelevated no-caps size="xs" color="primary" label="Ver Detalles" @click="verDetalles(lec)" />
             </td>
           </tr>
           <tr v-if="lecturasFiltradas.length === 0">
@@ -113,8 +103,11 @@
 
       <!-- Paginación -->
       <div class="row items-center justify-between q-pa-md">
-        <div class="text-caption text-grey-6">Mostrando {{ lecturasFiltradas.length }} de {{ lecturasPendientes }} lecturas pendientes</div>
-        <q-pagination v-model="pagina" :max="Math.ceil(lecturasPendientes / 4)" color="primary" flat active-color="primary" />
+        <div class="text-caption text-grey-6">Mostrando {{ lecturasFiltradas.length }} de {{ lecturasPendientes }}
+          lecturas
+          pendientes</div>
+        <q-pagination v-model="pagina" :max="Math.ceil(lecturasPendientes / 4)" color="primary" flat
+          active-color="primary" />
       </div>
     </div>
 
@@ -127,10 +120,15 @@
         </q-card-section>
         <q-card-section v-if="lecturaSeleccionada">
           <div class="q-gutter-sm">
-            <div><span class="text-grey-5 text-caption">Usuario:</span> <span class="text-white">{{ lecturaSeleccionada.usuario_nombre }}</span></div>
-            <div><span class="text-grey-5 text-caption">Tipo:</span> <span class="text-white">{{ lecturaSeleccionada.tipo }}</span></div>
-            <div><span class="text-grey-5 text-caption">Fecha:</span> <span class="text-white">{{ formatFecha(lecturaSeleccionada.fecha) }}</span></div>
-            <div><span class="text-grey-5 text-caption">Estado:</span> <q-badge :color="getEstadoColor(lecturaSeleccionada.estado)" :label="lecturaSeleccionada.estado" /></div>
+            <div><span class="text-grey-5 text-caption">Usuario:</span> <span class="text-white">{{
+              lecturaSeleccionada.usuario_nombre }}</span></div>
+            <div><span class="text-grey-5 text-caption">Tipo:</span> <span class="text-white">{{
+                lecturaSeleccionada.tipo
+                }}</span></div>
+            <div><span class="text-grey-5 text-caption">Fecha:</span> <span class="text-white">{{
+              formatFecha(lecturaSeleccionada.fecha) }}</span></div>
+            <div><span class="text-grey-5 text-caption">Estado:</span> <q-badge
+                :color="getEstadoColor(lecturaSeleccionada.estado)" :label="lecturaSeleccionada.estado" /></div>
           </div>
           <div class="q-mt-lg row q-gutter-sm">
             <q-btn unelevated no-caps color="positive" label="Marcar Completado" />
@@ -190,8 +188,8 @@ onMounted(async () => {
     lecturas.value = [
       { _id: '001', usuario_nombre: 'Marcus Holloway', usuario_email: 'marcus.r@example.com', tipo: 'Mapa Natal Completo', subtipo: 'Interpretación Profunda', fecha: new Date(), estado: 'en proceso', urgencia: 'HACE 2 HORAS' },
       { _id: '002', usuario_nombre: 'Sarah Jenkins', usuario_email: 's.jenkins@webzmail.com', tipo: 'Sinastria de Pareja', subtipo: 'Especial Numerológico', fecha: new Date(Date.now() - 86400000), estado: 'completado', urgencia: 'Hace 1 día' },
-      { _id: '003', usuario_nombre: 'Julian Thorne', usuario_email: 'j.thorne@astro.net', tipo: 'Pronóstico Anual 2024', subtipo: 'Ciclo de 9 años', fecha: new Date(Date.now() - 86400000*2), estado: 'cancelado', urgencia: 'Hace 2 días' },
-      { _id: '004', usuario_nombre: 'Elena Valerius', usuario_email: 'elena.v@mystic.com', tipo: 'Misión de Vida', subtipo: 'Lectura Kármica', fecha: new Date(Date.now() - 86400000*3), estado: 'en proceso', urgencia: 'Hace 3 días' },
+      { _id: '003', usuario_nombre: 'Julian Thorne', usuario_email: 'j.thorne@astro.net', tipo: 'Pronóstico Anual 2024', subtipo: 'Ciclo de 9 años', fecha: new Date(Date.now() - 86400000 * 2), estado: 'cancelado', urgencia: 'Hace 2 días' },
+      { _id: '004', usuario_nombre: 'Elena Valerius', usuario_email: 'elena.v@mystic.com', tipo: 'Misión de Vida', subtipo: 'Lectura Kármica', fecha: new Date(Date.now() - 86400000 * 3), estado: 'en proceso', urgencia: 'Hace 3 días' },
     ]
   } finally {
     loading.value = false

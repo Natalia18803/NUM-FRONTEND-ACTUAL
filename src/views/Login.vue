@@ -167,8 +167,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { postData } from '../../services/apiClient.js'
-import { useAuthStore } from '../../store/auth'
+import { postData } from '../services/apiClient.js'
+import { useAuthStore } from '../store/auth'
 
 const router = useRouter()
 const authStore = useAuthStore()
