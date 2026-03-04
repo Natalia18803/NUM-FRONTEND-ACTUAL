@@ -6,7 +6,7 @@ import { postData } from './apiClient';
  * @returns {Promise} - Respuesta con token
  */
 export const loginService = async (credentials) => {
-  return await postData('/api/auth/login', credentials);
+  return await postData('auth/login', credentials);
 };
 
 /**
@@ -15,7 +15,7 @@ export const loginService = async (credentials) => {
  * @returns {Promise} - Respuesta del registro
  */
 export const registerService = async (userData) => {
-  return await postData('/auth/register', userData);
+  return await postData('auth/register', userData);
 };
 
 /**
@@ -23,5 +23,5 @@ export const registerService = async (userData) => {
  * @returns {Promise} - Respuesta del logout
  */
 export const logoutService = async () => {
-  return await postData('/auth/logout', {});
+  return await postData('auth/logout', {});
 };

@@ -110,6 +110,14 @@
                 <template v-slot:prepend>
                   <q-icon name="lock" color="grey-7" size="18px" />
                 </template>
+                <template v-slot:append>
+                  <q-icon
+                    :name="showPassword ? 'visibility' : 'visibility_off'"
+                    class="cursor-pointer"
+                    color="grey-7"
+                    @click="showPassword = !showPassword"
+                  />
+                </template>
               </q-input>
             </div>
 
@@ -143,7 +151,6 @@
                 no-caps
                 text-color="white"
                 class="full-width btn-register"
-                @click="crearCuenta"
               >
                 <span class="q-mr-sm">Crear Cuenta</span>
                 <q-icon name="person_add" size="18px" />
@@ -215,9 +222,10 @@ let usuario = ref("")
 let pass = ref("")
 let role = ref("user")
 let remember = ref(false)
+let showPassword = ref(false)
 
-const useAuth = useAuthStore()
 const router = useRouter()
+const useAuth = useAuthStore()
 
 async function ingresar(){
   try {
@@ -228,16 +236,17 @@ async function ingresar(){
     console.log(res);
     useAuth.token = res.token
     
+    // Redireccionar según el rol
+    if (role.value === "admin") {
+      router.push("/admin")
+    } else {
+      router.push("/dashboard")
+    }
+    
   } catch (error) {
     console.log(error.response);
     
   }
-}
-
-
-
-function crearCuenta() {
-  router.push('/crear-cuenta');
 }
 
 </script>
